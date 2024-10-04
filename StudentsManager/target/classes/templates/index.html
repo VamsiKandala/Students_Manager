@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Student Manager</title>
+	<img src="../static/images.jpg" height="290" width="1520" th:src="@{images.jpg}" /> 
+</head>
+<body class="card text-white bg-secondary mb-3">
+<div  align="center">
+	<h1>Students Manager</h1>
+	
+	<table border="1" cellpadding="10" class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>STUDENT ID</th>
+                <th>NAME</th>
+                <th>BRANCH</th>
+                <th>MOBILE NO</th>
+                <th>GMAIL ID</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${listStudents}">
+            	<td th:text="${student.id}">STUDENT ID</td>
+                <td th:text="${student.name}">Name</td>
+                <td th:text="${student.branch}">Branch</td>
+                <td th:text="${student.mobile_no}">MOBILE NO</td>
+                <td th:text="${student.gmail}">GMAIL ID</td>
+                <td>
+                <a th:href="@{'/edit/' + ${student.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${student.id}}">Delete</a>
+                	
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="new">NEW STUDENT</a>
+</div>
+</body>
+</html>
